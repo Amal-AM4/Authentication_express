@@ -28,6 +28,12 @@ router.get('/welcome', authenticateUser, async (req, res, next) => {
   res.render('welcome', {data: result});
 });
 
+router.get('/dashash', authenticateUser, authController.nextPage);
+
+router.get('/testRouter', (req, res) => {
+  res.send('TestRouter');
+})
+
 router.post('/register', authController.userRegister);
 router.post('/login', authController.userLogIn);
 

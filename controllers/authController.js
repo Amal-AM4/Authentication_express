@@ -46,13 +46,6 @@ async function userLogIn (req, res) {
         const token = jwt.sign({ userId: user.id }, 'amal', {expiresIn: '1h'});
         console.log(`token: ${token}`);
         
-        // const options = {
-        //     expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-        //     httpOnly: true
-        // };
-        // res.status(200).cookie("token", token, options);
-
-        // or
 
         res.cookie("token", token , {
             httpOnly: true,
@@ -66,7 +59,11 @@ async function userLogIn (req, res) {
     }
 }
 
+async function nextPage (req, res) {
+    res.send('Hello this is new page');
+}
 
 
-module.exports = { userRegister, userLogIn };
+
+module.exports = { userRegister, userLogIn, nextPage };
 
